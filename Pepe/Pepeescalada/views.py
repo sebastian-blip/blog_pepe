@@ -1,9 +1,12 @@
 from django.shortcuts import render
+from .models import Posteado
 
 
 def feed(request):
-    return render(request, 'social/feed.html')
+    mensajes = Posteado.objects.all()
+    context = {'post': mensajes}
+    return render(request, 'blog/feed.html', context)
 
 
 def profile(request):
-    return render(request, 'social/profile.html')
+    return render(request, 'blog/profile.html')
