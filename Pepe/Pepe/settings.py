@@ -115,6 +115,7 @@ USE_I18N = True
 USE_TZ = True
 
 LOGIN_REDIRECT_URL = reverse_lazy('feed')
+LOGOUT_REDIRECT_URL = reverse_lazy('salir')
 
 
 # Static files (CSS, JavaScript, Images)

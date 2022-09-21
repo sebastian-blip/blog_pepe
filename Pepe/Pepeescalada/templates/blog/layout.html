@@ -14,9 +14,15 @@
 		<nav class="main">
 			<h1 id="logo">Pepe Escalada</h1>
 			<ul>
+				{% if request.user.is_authenticated %}
 				<li><a href="#">Inicio</a></li>
 				<li><a href="#">Nuevo post</a></li>
-				<li><a href="#">Salir</a></li>
+				<li><a href="{% url 'salir' %}">Salir</a></li>
+				{% else %}
+				<li><a href="{% url 'registro' %}">Registrarse</a></li>
+				<li><a href="{% url 'ingreso' %}">Ingresar</a></li>
+				{% endif %}
+
 			</ul>
 		</nav>
 	</header>
