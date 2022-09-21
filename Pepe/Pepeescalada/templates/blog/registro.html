@@ -2,6 +2,7 @@
 {% block content %}
 <form class="form" method="post">
   {% csrf_token %}
+    <h4>Formulario Registro</h4>
   {% for field in form %}
      <div class="fieldWrapper">
         {{ field.errors }}
