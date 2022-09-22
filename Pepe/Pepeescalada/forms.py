@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Ejercicio
+from .models import Ejercicio, Posteado
 
 
 class Registrousuario(UserCreationForm):
@@ -49,3 +49,15 @@ class EjercioForm(forms.ModelForm):
     class Meta:
         model = Ejercicio
         fields = ['nombre_ejercicio', 'repeticiones', 'series']
+
+
+class Nuevopost(forms.ModelForm):
+
+    contenido = forms.CharField(label="",
+        widget=forms.Textarea(
+            attrs={'rows': 2, 'placeholder': 'Que escalaste hoy', 'class': "controls"}),
+        required=True)
+
+    class Meta:
+        model = Posteado
+        fields = ['contenido']

@@ -1,0 +1,15 @@
+{% extends 'blog/formulariobase.html' %}
+{% block content %}
+<form class="form" method="post">
+  {% csrf_token %}
+    <h4>Nuevo post</h4>
+  {% for field in form %}
+     <div class="fieldWrapper">
+        {{ field.errors }}
+        {{ field.label_tag }} {{ field }}
+    </div>
+  {% endfor %}
+  <button type="submit" class="form-register" id="submit">Postear</button>
+</form>
+<p><a href="{% url 'feed' %}">Inicio</a></p>
+{% endblock %}

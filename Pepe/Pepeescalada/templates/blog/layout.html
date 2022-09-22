@@ -16,7 +16,7 @@
 			<ul>
 				{% if request.user.is_authenticated %}
 				<li><a href="#">Inicio</a></li>
-				<li><a href="#">Nuevo post</a></li>
+				<li><a href="{% url 'newpost' %}">Nuevo post</a></li>
 				<li><a href="{% url 'salir' %}">Salir</a></li>
 				{% else %}
 				<li><a href="{% url 'registro' %}">Registrarse</a></li>
