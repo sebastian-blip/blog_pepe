@@ -1,0 +1,10 @@
+{% extends 'blog/formulariobase.html' %}
+{% block content %}
+<form class="login-form" method="post">
+  {% csrf_token %}
+  <h4>Ejercicio nuevo</h4>
+  {{ form }}
+  <button type="submit" class="form-register" id="submit">Guardar</button>
+</form>
+<p><a href="{% url 'registro' %}">Registrarme</a></p>
+{% endblock %}

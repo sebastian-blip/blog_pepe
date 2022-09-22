@@ -1,0 +1,14 @@
+{% extends 'blog/formulariobase.html' %}
+{% block content %}
+<form class="login-form" method="post">
+  {% csrf_token %}
+  <h4>Ingreso</h4>
+  <label for="Usuario"></label>
+  <input class="controls" type="text" name="username" id="Usuario" placeholder="Ingrese su usuario">
+  <label for="Contraseña"></label>
+  <input class="controls" type="password" name="password" id="Contraseña" placeholder="Ingrese su Contraseña">
+
+  <button type="submit" class="form-register" id="submit">Ingresar</button>
+</form>
+<p><a href="{% url 'registro' %}">Registrarme</a></p>
+{% endblock %}
