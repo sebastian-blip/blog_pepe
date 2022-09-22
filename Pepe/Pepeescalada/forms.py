@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from .models import Ejercicio
 
 
 class Registrousuario(UserCreationForm):
@@ -23,3 +24,28 @@ class Registrousuario(UserCreationForm):
         }
         fields = ('username', 'email', 'password1', 'password2')
         help_texts = {k: "" for k in fields}
+
+
+class EjercioForm(forms.ModelForm):
+    nombre_ejercicio = forms.CharField(
+        label="",
+        widget=forms.Textarea(
+            attrs={'rows': 2, 'placeholder': 'Nombre del ejercicio', 'class': "controls"}),
+        required=True
+    )
+    repeticiones = forms.IntegerField(
+        label="",
+        widget=forms.Textarea(
+            attrs={'rows': 2, 'placeholder': 'Repeticiones', 'class': "controls"}),
+        required=True
+    )
+    series = forms.IntegerField(
+        label="",
+        widget=forms.Textarea(
+            attrs={'rows': 2, 'placeholder': 'Series', 'class': "controls"}),
+        required=True
+    )
+
+    class Meta:
+        model = Ejercicio
+        fields = ['nombre_ejercicio', 'repeticiones', 'series']
