@@ -2,7 +2,7 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth.views import LoginView, LogoutView
-from .views import feed, profile, registro, agregar_ejercicio, guardado
+from .views import feed, profile, registro, agregar_ejercicio, guardado, nuevo_post
 
 
 urlpatterns = [
@@ -15,4 +15,5 @@ urlpatterns = [
          name='salir'),
     path('nuevoejercicio/', agregar_ejercicio, name='ejercicio'),
     path('Guardado/', guardado, name='guardado'),
+    path('newpost/', nuevo_post, name='newpost'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

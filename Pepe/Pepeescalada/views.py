@@ -1,7 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Posteado, Ejercicio
-from .forms import Registrousuario, EjercioForm
+from .forms import Registrousuario, EjercioForm, Nuevopost
 from django.contrib import messages
+from django.contrib.auth.models import User
 
 
 def feed(request):
@@ -47,3 +48,19 @@ def agregar_ejercicio(request):
     else:
         form = EjercioForm()
     return render(request, 'blog/registroEjercicio.html', {'form': form})
+
+
+def nuevo_post(request):
+    current_user = get_object_or_404(User, pk=request.user.pk)
+    if request.method == 'POST':
+        form = Nuevopost(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user = current_user
+            post.save()
+            messages.success(request, 'post nuevo')
+            return redirect('feed')
+    else:
+        form = Nuevopost()
+    return render(request, 'blog/posteo.html', {'form': form})
+
