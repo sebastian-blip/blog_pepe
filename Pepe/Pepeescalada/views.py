@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .models import Posteado
-from .forms import Registrousuario
+from .models import Posteado, Ejercicio
+from .forms import Registrousuario, EjercioForm
 from django.contrib import messages
 
 
@@ -27,3 +27,23 @@ def registro(request):
 
 def profile(request):
     return render(request, 'blog/profile.html')
+
+
+def guardado(request):
+    return render(request, 'blog/Guardado.html')
+
+
+def agregar_ejercicio(request):
+    if request.method == 'POST':
+        form = EjercioForm(request.POST)
+        if form.is_valid():
+            Ejercicio.objects.create(
+                nombre_ejercicio=form.cleaned_data['nombre_ejercicio'],
+                repeticiones=form.cleaned_data['repeticiones'],
+                series=form.cleaned_data['series'],
+            )
+            messages.success(request, 'ejercicio guardado')
+            return redirect('guardado')
+    else:
+        form = EjercioForm()
+    return render(request, 'blog/registroEjercicio.html', {'form': form})
