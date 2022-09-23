@@ -23,4 +23,4 @@ Los formularios los puedes ver en view.py y forms.py, estos son:
 este formulario se encuentra en:
 -localhost/ingreso, se realizo con ayuda de un función interna de django que es LoginView y con el html ingreso.html.
 Este formulario busca en la BD y valida que el usuario este registrado dentro de la misma.
-
+5. la APP se encuentra en Pepeescalada, la carpeta pepe contiene los archivos de setting del proyecto
