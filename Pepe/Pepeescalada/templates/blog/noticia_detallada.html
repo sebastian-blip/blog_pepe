@@ -1,0 +1,22 @@
+{% extends 'blog/layout.html' %}
+{% load humanize %}
+{% block content %}
+
+<article>
+    <div class="container-blog">
+        <div>
+             <h1> {{ post.title }}</h1>
+             <div> {{ post.autor }} </div>
+             <div> {{ post.tags }} </div>
+             <p> {{ post.body|safe }} </p>
+            <div class="centrar"><img src=" {{ post.image.url }}"></div>
+            <i>{{ post.timestamp}}</i>
+
+        </div>
+
+    </div>
+
+</article>
+
+{{ block.super }}
+{% endblock %}

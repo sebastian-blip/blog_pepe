@@ -2,11 +2,10 @@
 {% load static %}
 <html>
 <head>
-	<title>Pepe escalada</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Pepe Noticias</title>
 	<link href='http://fonts.googleapis.com/css?family= Montserrat' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="{% static 'normalize.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
 </head>
 <body>
 
@@ -18,7 +17,6 @@
 			<ul>
 				{% if request.user.is_authenticated %}
 				<li><a href="{% url 'salir' %}">Logout</a></li>
-				<li><a href="{% url 'noticia' %}">Noticias</a></li>
 				{% else %}
 				<li><a href="{% url 'registro' %}">Registrarse</a></li>
 				<li><a href="{% url 'ingreso' %}">Login</a></li>

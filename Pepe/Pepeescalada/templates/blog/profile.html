@@ -1,10 +1,10 @@
-{% extends 'blog/layout.html' %}
+{% extends 'blog/feed.html' %}
 {% block content %}
 
 <!-- Profile -->
 <div class="profile">
-	<img src="../../static/alien.jpg">
-	<h2>@Alien</h2>
+	<img src="{{ user.perfil.imagen.url }}">
+	<h2>{{ user.username }}</h2>
 	<button><a class="follow-button" href="#">Follow</a></button>
 </div>
 
@@ -12,7 +12,7 @@
 <div class="follow">
 	<div>
 		<h5>Post</h5>
-		<p>0</p>
+		<p>{{ user.posts.count }}</p>
 	</div>
 	<div>
 		<h5>Followers</h5>
@@ -25,6 +25,5 @@
 	</div>
 </div>
 
-
-<!-- block super -->
+{{ block.super }}
 {% endblock %}
