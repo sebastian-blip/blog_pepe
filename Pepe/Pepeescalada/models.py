@@ -12,6 +12,16 @@ class Perfil(models.Model):
     def __str__(self):
         return f'Perfil de {self.user.username}'
 
+    def following(self):
+        user_ids = Relacion.objects.filter(from_user=self.user) \
+            .values_list('to_user_id', flat=True)
+        return User.objects.filter(id__in=user_ids)
+
+    def followers(self):
+        user_ids = Relacion.objects.filter(to_user=self.user) \
+            .values_list('from_user_id', flat=True)
+        return User.objects.filter(id__in=user_ids)
+
 
 class Posteado(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='posts')
@@ -23,6 +33,8 @@ class Posteado(models.Model):
 
 
 class Ejercicio(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE,
+                             related_name='ejercicio')
     nombre_ejercicio = models.CharField(max_length=100)
     repeticiones = models.IntegerField()
     series = models.IntegerField()
@@ -54,3 +66,16 @@ class Publicacion(models.Model):
         return self.title
 
 
+class Relacion(models.Model):
+    from_user = models.ForeignKey(User, related_name='relationships',
+                                  on_delete=models.CASCADE)
+    to_user = models.ForeignKey(User, related_name='related_to',
+                                  on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.from_user} to {self.to_user}'
+
+    class Meta:
+        indexes = [
+            models.Index(fields=['from_user', 'to_user']),
+        ]

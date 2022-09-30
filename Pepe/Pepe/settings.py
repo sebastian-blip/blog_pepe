@@ -124,7 +124,7 @@ USE_TZ = True
 
 LOGIN_REDIRECT_URL = reverse_lazy('feed')
 LOGOUT_REDIRECT_URL = reverse_lazy('salir')
-
+LOGIN_URL = 'ingreso'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/

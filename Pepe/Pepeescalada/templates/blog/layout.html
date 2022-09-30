@@ -16,9 +16,16 @@
 				<img src="{% static 'logo.png' %}" width="100" height="100">
 			</h1>
 			<ul>
+
 				{% if request.user.is_authenticated %}
-				<li><a href="{% url 'salir' %}">Logout</a></li>
-				<li><a href="{% url 'noticia' %}">Noticias</a></li>
+				   {% if request.user.is_superuser %}
+				      <li><a href="{% url 'salir' %}">Logout</a></li>
+				      <li><a href="{% url 'noticia' %}">Noticias</a></li>
+				      <li><a href="{% url 'crear_noticia' %}">Nueva Noticia</a></li>
+				   {% else %}
+				      <li><a href="{% url 'salir' %}">Logout</a></li>
+				      <li><a href="{% url 'noticia' %}">Noticias</a></li>
+				   {% endif %}
 				{% else %}
 				<li><a href="{% url 'registro' %}">Registrarse</a></li>
 				<li><a href="{% url 'ingreso' %}">Login</a></li>
