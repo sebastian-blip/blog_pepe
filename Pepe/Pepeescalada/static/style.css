@@ -21,6 +21,7 @@ p{
 	font-size: 1rem;
 }
 
+
 button{
 	font-size: 1rem;
 	color: #000000;
@@ -298,6 +299,10 @@ img.profile{
 
 .follow-button{
   color: white;
+}
+
+.eliminar-button{
+    color: white;
 }
 
 /*Media Queries*/

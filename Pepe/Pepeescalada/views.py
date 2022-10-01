@@ -78,6 +78,25 @@ def ver_ejercicio(request, username=None):
 
 
 @login_required
+def eliminar_ejercicio(request, ejercicio_id):
+    current_user = get_object_or_404(User, pk=request.user.pk)
+    try:
+        ejercicio = Ejercicio.objects.get(pk=ejercicio_id)
+
+    except Ejercicio.DoesNotExist:
+        messages.error(request, f'El ejercicio que quieres eliminar no existe')
+        return redirect('mirutina ', username=request.user.username)
+
+    if ejercicio.user != current_user:
+        messages.error(request, f'Este ejericio no te pertenece.')
+        return redirect('mirutina', username=request.user.username)
+
+    ejercicio.delete()
+    messages.success(request, f'Ejercicio eliminado')
+    return redirect('mirutina', username=request.user.username)
+
+
+@login_required
 def nuevo_post(request):
     current_user = get_object_or_404(User, pk=request.user.pk)
     if request.method == 'POST':

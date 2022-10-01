@@ -13,6 +13,7 @@ urlpatterns = [
     path('ingreso/', LoginView.as_view(template_name='blog/ingreso.html'), name='ingreso'),
     path('salir/', LogoutView.as_view(template_name='blog/salir.html'), name='salir'),
     path('nuevoejercicio/', agregar_ejercicio, name='ejercicio'),
+    path('rutina/eliminar/<int:ejercicio_id>', eliminar_ejercicio, name='eliminarejercicio'),
     path('Guardado/', guardado, name='guardado'),
     path('newpost/', nuevo_post, name='newpost'),
     path('noticia/', noticia, name='noticia'),
