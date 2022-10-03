@@ -40,6 +40,36 @@ def profile(request, username=None):
     return render(request, 'blog/profile.html', context)
 
 
+@login_required
+def editar_perfil(request, user_id):
+    current_user = get_object_or_404(User, pk=request.user.pk)
+    try:
+        usuario = Perfil.objects.get(pk=user_id)
+
+    except Ejercicio.DoesNotExist:
+        messages.error(request, f'El usuario no existe')
+        return redirect('profile', username=request.user.username)
+
+    if usuario.user != current_user:
+        messages.error(request, f'No puedes editar otro usuario.')
+        return redirect('profile', username=request.user.username)
+    else:
+        if request.method == 'POST':
+            form = EditProfileForm(request.POST, request.FILES)
+            if form.is_valid():
+                usuario.imagen = form.cleaned_data.get('imagen')
+                usuario.save()
+                return redirect('profile', username=request.user.username)
+        else:
+            form = EditProfileForm()
+
+    context = {
+        'form': form,
+    }
+
+    return render(request, 'blog/registro.html', context)
+
+
 def guardado(request):
     return render(request, 'blog/Guardado.html')
 
@@ -112,6 +142,25 @@ def nuevo_post(request):
     return render(request, 'blog/posteo.html', {'form': form})
 
 
+@login_required
+def eliminar_post(request, post_id):
+    current_user = get_object_or_404(User, pk=request.user.pk)
+    try:
+        post = Posteado.objects.get(pk=post_id)
+
+    except Posteado.DoesNotExist:
+        messages.error(request, f'El post que quieres eliminar no existe')
+        return redirect('profile', username=request.user.username)
+
+    if post.user != current_user:
+        messages.error(request, f'Este post no te pertenece.')
+        return redirect('profile', username=request.user.username)
+
+    post.delete()
+    messages.success(request, f'Post eliminado')
+    return redirect('profile', username=request.user.username)
+
+
 def noticia(request):
     mensajes = Publicacion.objects.all()
     context = {'posts': mensajes}
@@ -147,6 +196,26 @@ def nueva_noticia(request):
     else:
         form = Nuevanoticia()
     return render(request, 'blog/nuevanoticia.html', {'form': form})
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def eliminar_noticia(request, noticia_id):
+    current_user = get_object_or_404(User, pk=request.user.pk)
+    try:
+        noticia = Publicacion.objects.get(pk=noticia_id)
+
+    except Publicacion.DoesNotExist:
+        messages.error(request, f'La noticia que quieres eliminar no existe')
+        return redirect('noticia')
+
+    if not current_user.is_superuser:
+        messages.error(request, f'No tiene permitido borrar esta noticia')
+        return redirect('noticia')
+
+
+    noticia.delete()
+    messages.success(request, f'Noticia eliminada')
+    return redirect('noticia')
 
 
 @login_required

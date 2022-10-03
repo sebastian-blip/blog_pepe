@@ -10,6 +10,13 @@
             <i class="clock"></i>
             <time data-time="#">{{ mensaje.timestamp|naturaltime }}</time>
             <div class="post">{{ mensaje.contenido }}</div>
+            {% if request.user.is_authenticated %}
+		        {% if user.username == request.user.username %}
+                   {% if mensaje.user.username == request.user.username %}
+			          <button><a class="eliminar-button" href="{% url 'eliminarpost' mensaje.id %}">Eliminar</a></button>
+                   {% endif %}
+		        {% endif %}
+	        {% endif %}
         </div>
     </div>
 </article>

@@ -28,6 +28,15 @@ class Registrousuario(UserCreationForm):
         help_texts = {k: "" for k in fields}
 
 
+class EditProfileForm(forms.ModelForm):
+
+    imagen = forms.ImageField(label='Profile Picture', required=False, widget=forms.FileInput)
+
+    class Meta:
+        model = Perfil
+        fields = ('imagen',)
+
+
 class EjercioForm(forms.ModelForm):
     nombre_ejercicio = forms.CharField(
         label="",

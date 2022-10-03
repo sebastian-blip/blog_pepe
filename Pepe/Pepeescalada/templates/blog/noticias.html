@@ -12,6 +12,10 @@
             <div class="centrar"><img src=" {{ mensaje.image.url }}"></div>
             <i>{{ mensaje.timestamp}}</i>
 
+            {% if request.user.is_superuser %}
+            <button><a class="eliminar-button" href="{% url 'eliminarnoticia' mensaje.id %}">Eliminar</a></button>
+            {% endif %}
+
         </div>
 
     </div>

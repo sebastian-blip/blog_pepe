@@ -31,8 +31,20 @@
 	<div>
 		<h5>Following</h5>
 		<p>{{ user.perfil.following.count }}</p>
+
 	</div>
+	<div>
+		{% if request.user.is_authenticated %}
+		  {% if user.username != request.user.username %}
+	        <button><a class="follow-button" href="{% url 'mirutina' user.username %}">Ver rutina</a></button>
+		  {% else %}
+            <button><a class="follow-button" href="{% url 'editar' user.id %}">Editar Perfil</a></button>
+		  {% endif %}
+        {% endif %}
+	</div>
+
 </div>
+
 
 {{ block.super }}
 {% endblock %}
