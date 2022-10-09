@@ -26,3 +26,5 @@ urlpatterns = [
     path('unfollow/<str:username>/', unfollow, name='unfollow'),
     path('rutina/<str:username>/', ver_ejercicio, name='mirutina'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+

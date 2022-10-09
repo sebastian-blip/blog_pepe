@@ -238,3 +238,9 @@ def unfollow(request, username):
     rel.delete()
     messages.success(request, f'Ya no sigues a {username}')
     return redirect('profile')
+
+
+def not_found_page(request, exception):
+    return render(request, 'blog/not-found.html')
+
+
