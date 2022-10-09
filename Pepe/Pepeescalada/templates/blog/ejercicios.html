@@ -1,0 +1,33 @@
+{% extends 'blog/layout.html' %}
+{% block content %}
+
+<!-- Profile -->
+<div class="profile">
+	<img src="{{ user.perfil.imagen.url }}">
+	<h2>{{ user.username }}</h2>
+
+	{% if request.user.is_authenticated %}
+		{% if user.username == request.user.username %}
+			<button><a class="follow-button" href="{% url 'ejercicio'%}">Agregar</a></button>
+			{% else %}
+			<button><a class="follow-button" href="{% url 'mirutina' request.user.username %}">Mi rutina</a></button>
+			{% endif %}
+	{% endif %}
+	{% for ejercicio in ejercicios %}
+<article>
+    <div class="container-article">
+            <h2 class="username">{{ ejercicio.nombre_ejercicio}} = {{ejercicio.repeticiones }}*{{ ejercicio.series}} </h2>
+    </div>
+    <div>
+	{% if request.user.is_authenticated %}
+		   {% if user.username == request.user.username %}
+			<button><a class="eliminar-button" href="{% url 'eliminarejercicio' ejercicio.id %}">Eliminar</a></button>
+		  {% endif %}
+	{% endif %}
+	</div>
+</article>
+{% endfor %}
+
+</div>
+
+{% endblock %}

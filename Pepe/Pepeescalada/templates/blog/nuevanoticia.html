@@ -1,0 +1,14 @@
+{% extends 'blog/layout.html' %}
+{% block content %}
+
+<form class="form" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+    <h1>Nuevo Noticia</h1>
+     <div class="fieldWrapper">
+         {{ form.media }}
+         {{ form }}
+         </div>
+  <button type="submit" id="submit">Postear</button>
+</form>
+
+{% endblock %}

@@ -1,15 +1,22 @@
 {% extends 'blog/layout.html' %}
 {% load humanize %}
 {% block content %}
-{% for mensaje in post %}
+{% for mensaje in posts %}
 <article>
     <div class="container-article">
         <img src=" {{ mensaje.user.perfil.imagen.url }}">
         <div>
-            <h2 class="username"><a href="#">{{ mensaje.user.username }}</a></h2>
+            <h2 class="username"><a href="{% url 'profile' mensaje.user.username %}">{{ mensaje.user.username }}</a></h2>
             <i class="clock"></i>
             <time data-time="#">{{ mensaje.timestamp|naturaltime }}</time>
             <div class="post">{{ mensaje.contenido }}</div>
+            {% if request.user.is_authenticated %}
+		        {% if user.username == request.user.username %}
+                   {% if mensaje.user.username == request.user.username %}
+			          <button><a class="eliminar-button" href="{% url 'eliminarpost' mensaje.id %}">Eliminar</a></button>
+                   {% endif %}
+		        {% endif %}
+	        {% endif %}
         </div>
     </div>
 </article>

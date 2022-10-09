@@ -1,0 +1,26 @@
+{% extends 'blog/layout.html' %}
+{% load humanize %}
+{% block content %}
+{% for mensaje in posts %}
+<article>
+    <div class="container-article">
+        <div>
+            <div class="centrar">
+             <h1><a href="{% url 'detallenoticia' mensaje.slug %}">{{ mensaje.title }}</a></h1>
+            </div>
+            <div> {{ mensaje.autor }} </div>
+            <div class="centrar"><img src=" {{ mensaje.image.url }}"></div>
+            <i>{{ mensaje.timestamp}}</i>
+
+            {% if request.user.is_superuser %}
+            <button><a class="eliminar-button" href="{% url 'eliminarnoticia' mensaje.id %}">Eliminar</a></button>
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</article>
+{% endfor %}
+
+{% endblock %}
