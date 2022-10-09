@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-=je&e=z)vpbk7++%oh!6_(v)p!20-a!5hdfyq0@sth5q(s#cwt
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -40,7 +40,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Pepeescalada.apps.PepeescaladaConfig',
+    'ckeditor',
+    'crispy_forms',
 ]
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+    },
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -116,7 +124,7 @@ USE_TZ = True
 
 LOGIN_REDIRECT_URL = reverse_lazy('feed')
 LOGOUT_REDIRECT_URL = reverse_lazy('salir')
-
+LOGIN_URL = 'ingreso'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/

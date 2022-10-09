@@ -1,6 +1,6 @@
 {% extends 'blog/formulariobase.html' %}
 {% block content %}
-<form class="form" method="post">
+<form class="form" method="post" enctype="multipart/form-data">
   {% csrf_token %}
     <h4>Nuevo post</h4>
   {% for field in form %}

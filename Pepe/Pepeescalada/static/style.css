@@ -1,11 +1,11 @@
 body{
-	background: #00A400;
+	background-image: url('fondo.jpg');
 	font-size: 70%;
-	font-family: 'Varela Round', Helvetica, Arial, serif;
+	font-family: ' Montserrat', Helvetica, Arial, serif;
 }
 /* Global Styles*/
 h1{
-
+    max-width: 80%;
 }
 
 h2{
@@ -21,9 +21,10 @@ p{
 	font-size: 1rem;
 }
 
+
 button{
 	font-size: 1rem;
-	color: darkred;
+	color: #000000;
 	padding: 0.4rem 1.4rem;
 	border: none;
 	background: #7A9D96;
@@ -38,7 +39,7 @@ img{
 
 /* Nav bar */
 .main-head{
-	background: white;
+	background: #fffbfb;
 	color: black;
 }
 
@@ -58,7 +59,9 @@ nav.main ul{
 	align-items: center;
 	list-style: none;
 }
-
+.centrar {
+  text-align: center;
+}
 #logo{
 	flex: 2 1 40rem;
 }
@@ -143,6 +146,19 @@ article{
   border-radius: 50%;
 }
 
+.container-blog{
+  display: block;
+}
+
+.container-blog img{
+  height: 50%;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 5%;
+
+}
+
 article:last-child {
   border-bottom: 0;
 }
@@ -189,19 +205,19 @@ time {
 
 /*Form Elements*/
 form {
-    margin: 0;
+    margin: auto;
     padding: 40px;
     font-size: 1rem;
 }
 input {
   width: 100%;
   border: 0;
-  border-bottom: 2px solid #D3D8DC;
+  border-bottom: 3px solid #479d32;
   outline: 0;
   background: #fff;
   padding: 20px 0 4px;
   margin: 0 0 20px;
-  color: #777B7E;
+  color: #ea1111;
 }
 input:focus {
   border-color: #7A9D96;
@@ -246,7 +262,7 @@ button#submit:hover {
   font-size: 0.9rem;
 }
 .success {
-  background: #43DC7E;
+  background: #dc4367;
   color: white;
 }
 .error {
@@ -283,6 +299,10 @@ img.profile{
 
 .follow-button{
   color: white;
+}
+
+.eliminar-button{
+    color: white;
 }
 
 /*Media Queries*/
