@@ -243,4 +243,5 @@ def unfollow(request, username):
 def not_found_page(request, exception):
     return render(request, 'blog/not-found.html')
 
-
+def error_404_view(request, exception):
+    return render(request, "blog/404.html")
