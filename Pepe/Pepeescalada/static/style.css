@@ -312,3 +312,16 @@ img.profile{
   }
 
 }
+
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box; }
+
+html {
+  background: #ccc;
+  font: bold 14px/20px "Trajan Pro", "Times New Roman", Times, serif;
+  color: #430400;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.15); }
+
