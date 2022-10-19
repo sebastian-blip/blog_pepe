@@ -23,3 +23,4 @@ urlpatterns = [
 ]
 
 handler404 = "Pepeescalada.views.error_404_view"
+handler500 = "Pepeescalada.views.error_500_view"
