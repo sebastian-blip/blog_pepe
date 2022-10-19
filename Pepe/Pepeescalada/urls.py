@@ -3,6 +3,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth.views import LoginView, LogoutView
 from .views import *
+from django.views.static import serve
+from django.urls import re_path
 
 
 urlpatterns = [
@@ -25,6 +27,8 @@ urlpatterns = [
     path('follow/<str:username>/', follow, name='follow'),
     path('unfollow/<str:username>/', unfollow, name='unfollow'),
     path('rutina/<str:username>/', ver_ejercicio, name='mirutina'),
+    re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
+    re_path(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT}),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

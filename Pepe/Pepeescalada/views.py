@@ -240,7 +240,9 @@ def unfollow(request, username):
     return redirect('profile')
 
 
-def not_found_page(request, exception):
-    return render(request, 'blog/not-found.html')
+def error_404_view(request, exception):
+    return render(request, "blog/404.html")
 
 
+def error_500_view(request):
+    return render(request, "blog/500.html")
