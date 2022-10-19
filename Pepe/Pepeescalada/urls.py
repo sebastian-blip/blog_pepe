@@ -25,6 +25,7 @@ urlpatterns = [
     path('follow/<str:username>/', follow, name='follow'),
     path('unfollow/<str:username>/', unfollow, name='unfollow'),
     path('rutina/<str:username>/', ver_ejercicio, name='mirutina'),
+    path('aboutus/', about, name='aboutus')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

@@ -1,0 +1,10 @@
+{% extends 'blog/formulariobase.html' %}
+{% block content %}
+<form class="form" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+    <h4>Editar Perfil</h4>
+{{ form }}
+  <button type="submit" class="form-register" id="submit">Guardar</button>
+</form>
+{% endblock %}
+

@@ -67,7 +67,7 @@ def editar_perfil(request, user_id):
         'form': form,
     }
 
-    return render(request, 'blog/registro.html', context)
+    return render(request, 'blog/EditarPerfil.html', context)
 
 
 def guardado(request):
@@ -240,7 +240,10 @@ def unfollow(request, username):
     return redirect('profile')
 
 
-def not_found_page(request, exception):
-    return render(request, 'blog/not-found.html')
+def about(request):
+    return render(request, 'blog/AboutUs.html')
+
+
+
 
 
