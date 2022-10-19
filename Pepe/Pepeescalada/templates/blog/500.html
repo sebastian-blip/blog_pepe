@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error 404</title>
+    <style>
+    *{
+        font-family: sans-serif;
+    }
+        body{
+            background-image: url('static/fondo.jpg');
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .Error404{
+            align-items: center;
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            line-height: 1.7;
+            color: #434343;
+
+        }
+        .botonn{
+            display: inline-block;
+            margin-top: 15px;
+            text-decoration: none;
+            background: green;
+            padding: 10px;
+            border-radius: 10px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="Error404">
+        <img src="{% static 'logo.png' %}">
+        <h1>Error 500</h1>
+        <p> Lo sentimos, presentamos problemas. </p>
+        <a href="{%url  'feed'%}"class="botonn">Ir a home.</a>
+    </div>
+</body>
+</html>

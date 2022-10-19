@@ -244,6 +244,9 @@ def about(request):
     return render(request, 'blog/AboutUs.html')
 
 
+def error_404_view(request, exception):
+    return render(request, "blog/404.html")
 
 
-
+def error_500_view(request):
+    return render(request, "blog/500.html")
